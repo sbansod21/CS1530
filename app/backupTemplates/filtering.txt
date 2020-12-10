@@ -1,0 +1,13 @@
+{#<select id="filterselection" onchange="run()">
+  <option value="all"> Show all</option>
+  <option value="FastFood">Fast Food</option>
+  <option value="Dining">Dining</option>
+  <option value="Dessert">Dessert</option>
+  <option value="Chinese">Chinese</option>
+  <option value="Pizza">Pizza</option>
+  <option value="Healthy">Healthy</option>
+  <option value="Bars">Bars</option>
+  <option value="OutsideCampus">Outside Campus</option>
+ </select><br><br>
+TextBox1<br>
+<input type="text" id="srt" placeholder="get value on option select"><br>#}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}PittJungle{% endblock %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block page_content %}
+<p>
+Check out the github for how to install: <a href="https://github.com/tlessig8771/CS1530-G14" color="blue">Pitt Jungle Github</a>
+<br /><br />
+</p>
+
+<p>Arrival to the webpage<br /><br />
+As previously mentioned, the main home screen to PittJungle will show up upon access. This page will have a short description of what the site is trying to accomplish. The page will also have all the tabs of what the site is to contain shown and able to be accessed by ‘guests.’ In figure 2.3.1, users or ‘guests’ at this point should see a green backgrounded login link. Click this to login or create an account to obtain full access to everything PittJungle will provide.
+<br /><br />
+</p>
+
+<p>Login Page<br /><br />
+After clicking the login link, users will be provided with the following page shown in figure 2.3.2. From here, you should enter a username and password. If you have already signed up or created an account before, just click ‘login’. Otherwise, click ‘create account.’ This will add you to the user database. No two usernames will be allowed. If a username is taken, you will be prompted with an alert stating this, and will have to enter a new one. 
+<br /><br />
+</p>
+
+<p>Non-User Screen vs. Logged in User Screen<br /><br />
+
+It is almost identical in layout as a logged in user but a few features will have been removed. Figure 2.3.4 shows a logged in user screen. The key differences between the two figures are as follows:
+The filter by option is unavailable for non-users
+The Campus Events and *Academic Resources tab will be restricted to logged in users
+
+
+The logged in user screen shown above steps through what has been done or what can be done to alter the page and even database. What is meant by altering the page and database? First, a logged in user can filter by anything that is provided in the drop down menu ‘Filter By.’ This will move whatever your selection is to the top so you can view those first. Secondly, a logged in user will be kept track of in terms of likes of certain pages/tiles or events. This will help in updating the users “interests” to better gauge what to recommend to you upon logging in. For example, if you view various dessert and pizza places pages, you should not log in the next time being shown vegetables and waffles. You will also be able to like or dislike places and see the number of likes/dislikes given by other users. 
+<br /><br />
+</p>
+
+<p> Clicking on a Page of Interest<br /><br />
+You can view the tiles shown to you by clicking on them. This will prompt you with another page such as the one shown in figure 2.3.5. From here you will be provided with an image or images of the chosen place, a description of what it is, what they have to offer, how far away it is from Pitt’s address, and the address. This page is nothing more than to provide you with more information to give better insight if this is what you are looking for. 
+<br /><br />
+</p>
+
+<p> Campus Events<br /><br />
+Figure 2.3.6 will show the provisional design of the campus events page. Here you will be able to see events posted around campus from other students/users, be able to post an event of your own and comment on these posts to get more details if interested. For now, once an event is posted it cannot be changed. Therefore, the comment section may be a good way to update your post if you choose to create one. Here is where you would be able to add friends as well. This would allow you to create your own network of people from campus to go and explore with. This enables you to see their interests and therefore gauge similarities between the two of you.
+
+</p>
+
+
+{% endblock %}

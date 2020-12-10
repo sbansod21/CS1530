@@ -1,0 +1,126 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}PittJungle{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gayathri">
+
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+
+
+{% block navbar %} 
+<div class="navbar navbar-inverse" role="navigation" style= "background-color:rgb(9, 96, 106); font-family: Acme;">
+    <div style= "display: flex;">
+        <div class="container2" style= "display: flex;">
+            <img src="{{ url_for('static', filename='logo.png')}}" width=50 height=50  style = "display: flex;">        
+            <a class="navbar-brand" href="{{ url_for('main.index') }}" style="font-size: 50px; color: white;">PittJungle</a>
+        </div>
+
+        <div class="navbar-collapse collapse" style= "display: flex;">            
+            <ul class="nav navbar-nav navbar-right" style= "display: flex;">
+                {% if current_user.can(Permission.MODERATE) %}
+                <li style="font-size: 20px;"><a href="{{ url_for('main.moderate') }}">Moderate Comments</a></li>
+                {% endif %}
+                {% if current_user.is_authenticated %}
+                <li class="dropdown" style="font-size: 20px;">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="{{ current_user.gravatar(size=18) }}">
+                        Account <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" >
+                       
+                        <li><a href="{{ url_for('main.user', username=current_user.username) }}">Profile</a></li>                
+                        <li><a href="{{ url_for('auth.change_password') }}">Change Password</a></li>
+                        <li><a href="{{ url_for('auth.change_email_request') }}">Change Email</a></li>
+                        <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                    </ul>
+                </li>
+                {% else %}
+				<li><a href="{{ url_for('auth.register') }}">Register</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>   
+    
+<div class="flex bg-gray-200" style="margin-top: 20px;">
+    <div class=".flex-auto text-4xl text-gray-700 text-left bg-gray-400 px-4 py-2 m-2"
+    style= "background-color:rgb(91, 168, 160); font-family: Gayathri;">
+    
+        <ul style="text-align: left;">
+            <a href="{{ url_for('main.index') }}" ><li>Home</li></a>
+            <a href="{{ url_for('main.about_us') }}" ><li>About us</li></a> 
+			<a href="{{ url_for('main.tutorial') }}">Tutorial/Help</a>		
+            
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                 Restaurants
+                </a>
+				<ul class="dropdown-menu">
+					<li><a href="{{ url_for('main.show_restaurants') }}" class="pl-6 py-3"><li style = "text-align: left;">View Restaurants</li></a></li>
+            
+					{% if current_user.can(Permission.MODERATE) %}
+					<li><a href="{{ url_for('main.add_restaurant') }}" class="pl-6 py-3"><li >Add Restaurants</li></a></li>
+					{% endif %}
+				</ul>
+			</li>
+
+			<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                     Events
+                    </a>
+                    <ul class="dropdown-menu">
+						<li><a href="{{ url_for('main.list_events') }}" class="pl-6 py-3">View Events</a></li>
+						<li><a href="{{ url_for('main.create_event') }}" class="pl-6 py-3">Create Events</a></li>
+                    </ul>
+            </li>
+		
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					Attractions
+                    </a>
+                    <ul class="dropdown-menu">
+						<li><a href="{{ url_for('main.show_attractions') }}" class="pl-6 py-3">View Attractions</a></li>
+						<li><a href="{{ url_for('main.add_attraction') }}" class="pl-6 py-3">Create Attraction</a></li>
+                    </ul>
+            </li>
+            
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                     Academic Resources
+                    </a>
+                    <ul class="dropdown-menu">
+						<li><a href="{{ url_for('main.show_hikes') }}" class="pl-6 py-3">View Academic Resources</a></li>
+						<li><a href="{{ url_for('main.add_hike') }}" class="pl-6 py-3">Create Academic Resources</a></li>
+                    </ul>        
+            </li>
+            <a href="{{ url_for('main.recommendations') }}"><li>Recommendations</li></a>
+           
+        </ul>
+        
+    </div>
+
+    <div class="flex-1 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
+        {% block page_content %}
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ad labore ipsam, aut rem quo repellat esse tempore id, quidem
+        
+        {% endblock %}
+        
+        </div>
+        </div>    
+
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}
